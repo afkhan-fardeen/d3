@@ -1,0 +1,214 @@
+{
+  "nav": {
+    "solutions": "Solutions",
+    "industries": "Industries",
+    "caseStudies": "Case Studies",
+    "clients": "Clients",
+    "blog": "Blog",
+    "about": "About",
+    "contact": "Contact",
+    "requestDemo": "Request Demo"
+  },
+  "hero": {
+    "eyebrow": "Bahrain · Middle-East · Europe",
+    "headline": "Your IT partner for {highlight} intelligence.",
+    "highlight": "real-time",
+    "sub": "D3 delivers enterprise time attendance, HRMS, queue management and digital signage — built for the GCC region since 2010.",
+    "exploreSolutions": "Explore Solutions",
+    "ourStory": "Our Story",
+    "yearsActive": "Years Active",
+    "clients": "Clients",
+    "countries": "Countries",
+    "requestDemo": "Request a Demo"
+  },
+  "solutions": {
+    "eyebrow": "What we offer",
+    "title": "Complete enterprise {highlight}",
+    "highlight": "solutions",
+    "viewAll": "View all solutions",
+    "flagship": "Flagship",
+    "learnMore": "Learn more",
+    "items": {
+      "timetech": {
+        "title": "TimeTech Application",
+        "desc": "D3's flagship product — a complete cloud-based workforce management suite with time attendance, HR, payroll, visitor management and self-service portal."
+      },
+      "timeAttendance": {
+        "title": "Time Attendance & HRMS",
+        "desc": "Cloud-based fingerprint and face recognition attendance with full payroll, leave, appraisal and self-service. Built for GCC."
+      },
+      "queue": {
+        "title": "Queue Management",
+        "desc": "Wired, wireless and cloud-based queue systems for ministries and private sector. WhatsApp virtual queue included."
+      },
+      "signage": {
+        "title": "Digital Signage",
+        "desc": "LED displays, vertical signage and e-books for any indoor or outdoor deployment. IP power controller included."
+      },
+      "rfid": {
+        "title": "RFID & Asset Tracking",
+        "desc": "Asset, document and warehouse tracking with RFID or barcode across multiple buildings, departments and categories."
+      },
+      "cctv": {
+        "title": "IP CCTV & Access Control",
+        "desc": "Enterprise-grade IP surveillance and biometric access control tailored to GCC security requirements."
+      },
+      "erp": {
+        "title": "ERP & Retail Management",
+        "desc": "End-to-end ERP, inventory management, electronic shelf labels and ID card solutions for enterprise retail."
+      }
+    },
+    "tags": {
+      "biometric": "Biometric",
+      "cloud": "Cloud",
+      "multiCompany": "Multi-company",
+      "mobileApp": "Mobile App",
+      "kiosk": "Kiosk",
+      "whatsapp": "WhatsApp",
+      "virtualQueue": "Virtual Queue",
+      "led": "LED",
+      "ebook": "eBook",
+      "indoorOutdoor": "Indoor / Outdoor",
+      "assetTracking": "Asset Tracking",
+      "warehouse": "Warehouse",
+      "ipCamera": "IP Camera",
+      "biometricAccess": "Biometric Access",
+      "erp": "ERP",
+      "inventory": "Inventory",
+      "retail": "Retail"
+    }
+  },
+  "timetech": {
+    "eyebrow": "Flagship Product",
+    "title": "Meet {highlight} — D3's Workforce Intelligence Platform",
+    "highlight": "TimeTech",
+    "sub": "One platform. Full lifecycle workforce management. Trusted by 500+ organisations across the GCC.",
+    "modules": {
+      "attendance": "Time Attendance",
+      "hr": "HR & Payroll",
+      "visitor": "Visitor Management",
+      "selfService": "Self-Service Portal",
+      "mobile": "Mobile App",
+      "analytics": "Analytics"
+    },
+    "requestDemo": "Request TimeTech Demo",
+    "viewFeatures": "View all features"
+  },
+  "industries": {
+    "eyebrow": "Industries",
+    "title": "Built for your {highlight}",
+    "highlight": "industry",
+    "sub": "D3 solutions are deployed across government, banking, healthcare, retail and logistics — with local compliance built in.",
+    "items": {
+      "government": { "title": "Government", "desc": "Labour law compliance, LMRA integration, Ministry-grade security." },
+      "healthcare": { "title": "Healthcare", "desc": "Shift management, credential tracking, patient queue systems." },
+      "banking": { "title": "Banking & Finance", "desc": "SOX-compliant attendance, secure access, visitor screening." },
+      "retail": { "title": "Retail", "desc": "ERP, electronic shelf labels, inventory and POS integration." },
+      "logistics": { "title": "Logistics", "desc": "RFID asset tracking, warehouse management, fleet CCTV." }
+    }
+  },
+  "why": {
+    "eyebrow": "Why D3",
+    "title": "The D3 {highlight}",
+    "highlight": "difference",
+    "sub": "We don't just deliver technology — we deliver outcomes. Here's what separates us from every other IT vendor in the region.",
+    "items": {
+      "gcc": { "num": "01", "title": "GCC-first Design", "text": "Built for the Gulf — Arabic support, local labour law compliance and GCC regulatory standards built in from day one." },
+      "custom": { "num": "02", "title": "100% Customisable", "text": "Fully configurable platforms that integrate with any third-party ERP or existing system — no vendor lock-in, ever." },
+      "cloud": { "num": "03", "title": "Cloud & On-Premise", "text": "Cloud (AWS), on-server or hybrid — D3 solutions flex to your infrastructure and security requirements without compromise." },
+      "support": { "num": "04", "title": "Full-Lifecycle Support", "text": "From consultancy and implementation to ongoing support — one relationship, one contact, complete peace of mind." }
+    }
+  },
+  "caseStudies": {
+    "eyebrow": "Case Studies",
+    "title": "Real results for real {highlight}",
+    "highlight": "clients",
+    "sub": "See how D3 has transformed operations across the GCC.",
+    "readMore": "Read case study",
+    "viewAll": "View all case studies"
+  },
+  "process": {
+    "eyebrow": "How we work",
+    "title": "From consultation to {highlight}",
+    "highlight": "go-live",
+    "steps": {
+      "1": { "title": "Discovery", "desc": "We analyse your requirements, existing systems and compliance needs." },
+      "2": { "title": "Solution Design", "desc": "Custom configuration, integration planning and timeline sign-off." },
+      "3": { "title": "Implementation", "desc": "Rapid deployment with full testing, training and data migration." },
+      "4": { "title": "Ongoing Support", "desc": "Dedicated account management, SLA-backed support and updates." }
+    }
+  },
+  "cta": {
+    "eyebrow": "Get started today",
+    "title": "Ready to {highlight} your operations?",
+    "highlight": "transform",
+    "sub": "Schedule a live demo and see how D3 can streamline your workforce, queues and infrastructure from day one.",
+    "requestDemo": "Request a Demo",
+    "getInTouch": "Get in touch"
+  },
+  "clients": {
+    "eyebrow": "Trusted Clients",
+    "title": "500+ organisations trust {highlight}",
+    "highlight": "D3",
+    "sub": "From government ministries to leading banks, retailers and hospitals across the GCC and beyond.",
+    "government": "Government",
+    "private": "Private Sector",
+    "gcc": "GCC Clients"
+  },
+  "contact": {
+    "eyebrow": "Contact Us",
+    "title": "Let's talk about your {highlight}",
+    "highlight": "project",
+    "sub": "Fill in your details and our team will get back to you within 24 hours.",
+    "name": "Full Name",
+    "company": "Company",
+    "email": "Email Address",
+    "phone": "Phone Number",
+    "message": "Message",
+    "messagePlaceholder": "Tell us about your project...",
+    "submit": "Send Message",
+    "sending": "Sending...",
+    "success": "Thank you! We'll be in touch shortly.",
+    "error": "Something went wrong. Please try again.",
+    "address": "Manama, Kingdom of Bahrain",
+    "emailAddress": "info@dthree.co",
+    "phone1": "+973 1700 0000"
+  },
+  "footer": {
+    "tagline": "Real-time information sharing. Enterprise IT solutions for the Middle-East and Europe — built in Bahrain since 2010.",
+    "solutions": "Solutions",
+    "company": "Company",
+    "contact": "Contact",
+    "copyright": "D3 — Digital Data Dimensions. All rights reserved.",
+    "about": "About D3",
+    "ourClients": "Our Clients",
+    "partners": "Partners",
+    "news": "News",
+    "consultancy": "Consultancy",
+    "arabicVersion": "Arabic Version"
+  },
+  "blog": {
+    "eyebrow": "Resources",
+    "title": "Insights & {highlight}",
+    "highlight": "guides",
+    "sub": "Industry insights, product updates and best practices from the D3 team.",
+    "readMore": "Read more",
+    "viewAll": "View all articles"
+  },
+  "about": {
+    "eyebrow": "Who we are",
+    "title": "Built in Bahrain. Trusted {highlight}.",
+    "highlight": "globally",
+    "p1": "D3 — Digital Data Dimensions — was established in 2010 to deliver information technology solutions for small, medium and large enterprises across the Middle-East and Europe.",
+    "p2": "Our mission has always been to build long-term professional partnerships, not just sell software. Our team brings decades of experience across IT and real-world business operations.",
+    "learnMore": "Learn more about D3"
+  },
+  "common": {
+    "requestDemo": "Request Demo",
+    "learnMore": "Learn more",
+    "viewAll": "View all",
+    "backToHome": "Back to home",
+    "loading": "Loading...",
+    "tagline": "Digital Data Dimensions"
+  }
+}

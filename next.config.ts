@@ -1,7 +1,16 @@
-import type { NextConfig } from "next";
+import type { NextConfig } from 'next';
+import createNextIntlPlugin from 'next-intl/plugin';
+
+const withNextIntl = createNextIntlPlugin('./i18n/request.ts');
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Allow local network access for mobile testing
+  allowedDevOrigins: ['192.168.3.26', '192.168.1.*', '10.0.0.*', '172.16.*'],
+  images: {
+    remotePatterns: [
+      { protocol: 'https', hostname: 'cdn.sanity.io' },
+    ],
+  },
 };
 
-export default nextConfig;
+export default withNextIntl(nextConfig);
