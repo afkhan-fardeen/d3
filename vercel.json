@@ -4,7 +4,6 @@
   "outputDirectory": ".next",
   "installCommand": "npm install",
   "devCommand": "npm run dev",
-  "regions": ["dxb1"],
   "headers": [
     {
       "source": "/(.*)",
