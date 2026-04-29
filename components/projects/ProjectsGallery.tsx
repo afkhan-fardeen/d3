@@ -141,15 +141,6 @@ export function ProjectsGallery() {
                           <div className="pg-placeholder">{title}</div>
                         )}
                       </div>
-                      <div className="pg-meta">
-                        <div className="pg-title">{title}</div>
-                        {(p.industry || p.solution) && (
-                          <div style={{ display: 'flex', gap: 8, flexShrink: 0 }}>
-                            {p.industry && <div className="pg-badge">{p.industry}</div>}
-                            {p.solution && <div className="pg-badge pg-badge--dark">{p.solution}</div>}
-                          </div>
-                        )}
-                      </div>
                     </div>
                   );
                 })}
@@ -281,35 +272,6 @@ export function ProjectsGallery() {
           font-weight: 700;
           padding: 14px;
           text-align:center;
-        }
-        .pg-meta{
-          display:flex; align-items:flex-start; justify-content:space-between; gap:12px;
-          padding: 14px 14px 13px;
-        }
-        .pg-title{
-          font-size: 14px;
-          font-weight: 800;
-          color: var(--heading);
-          line-height: 1.25;
-          letter-spacing: -0.2px;
-        }
-        .pg-badge{
-          flex-shrink:0;
-          font-size: 10px;
-          font-weight: 800;
-          letter-spacing: 0.08em;
-          text-transform: uppercase;
-          color: var(--muted);
-          padding: 4px 10px;
-          border-radius: 999px;
-          border: 1px solid var(--border);
-          background: var(--bg-surface);
-          white-space: nowrap;
-        }
-        .pg-badge--dark{
-          color: #fff;
-          background: var(--heading);
-          border-color: var(--heading);
         }
 
       `}</style>
