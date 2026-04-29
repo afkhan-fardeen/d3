@@ -1,5 +1,5 @@
-// Core product and content data for D3 — Digital Data Dimensions
-// Powered by TimeTech solutions, serving GCC enterprises since 2010
+// Core product and content data for D3 — Digital Data Dimensions (static source of truth)
+// TimeTech solutions, serving GCC enterprises since 2010
 
 export const SOLUTIONS = [
   {

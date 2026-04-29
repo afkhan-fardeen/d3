@@ -1,18 +1,11 @@
 import type { Metadata, Viewport } from 'next';
-import { Montserrat, Cairo } from 'next/font/google';
+import { Montserrat } from 'next/font/google';
 import './globals.css';
 
 const montserrat = Montserrat({
   subsets: ['latin'],
   variable: '--font',
   weight: ['400', '500', '600', '700', '800'],
-  display: 'swap',
-});
-
-const cairo = Cairo({
-  subsets: ['arabic', 'latin'],
-  variable: '--font-ar',
-  weight: ['400', '600', '700', '800'],
   display: 'swap',
 });
 
@@ -51,7 +44,6 @@ export const metadata: Metadata = {
   openGraph: {
     type: 'website',
     locale: 'en_BH',
-    alternateLocale: ['ar_BH'],
     url: BASE_URL,
     siteName: 'D3 Digital Data Dimensions',
     title: 'D3 — TimeTech IT Solutions for GCC Enterprises | Bahrain Since 2010',
@@ -67,7 +59,7 @@ export const metadata: Metadata = {
   },
   alternates: {
     canonical: BASE_URL,
-    languages: { 'en-BH': `${BASE_URL}/en`, 'ar-BH': `${BASE_URL}/ar` },
+    languages: { 'en-BH': `${BASE_URL}/en` },
   },
 };
 
@@ -89,7 +81,7 @@ const jsonLd = {
       telephone: '+973-1333-3445',
       contactType: 'sales',
       areaServed: 'BH',
-      availableLanguage: ['English', 'Arabic'],
+      availableLanguage: ['English'],
     },
   ],
   address: {
@@ -114,7 +106,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={`${montserrat.variable} ${cairo.variable}`} suppressHydrationWarning>
+      <body className={montserrat.variable} suppressHydrationWarning>
         {children}
       </body>
     </html>

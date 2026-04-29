@@ -1,4 +1,3 @@
-import { getTranslations } from 'next-intl/server';
 import { HeroSection } from '@/components/home/HeroSection';
 import { MarqueeSection } from '@/components/home/MarqueeSection';
 import { TrustLogosSection } from '@/components/home/TrustLogosSection';
@@ -15,7 +14,7 @@ export async function generateMetadata({ params }: { params: Promise<{ locale: s
     description: 'D3 delivers enterprise time attendance, HRMS, queue management and digital signage solutions for the GCC. 500+ clients. Built in Bahrain since 2010.',
     alternates: {
       canonical: `/${locale}`,
-      languages: { en: '/en', ar: '/ar' },
+      languages: { en: '/en' },
     },
     openGraph: {
       title: 'D3 — Digital Data Dimensions',

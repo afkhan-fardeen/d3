@@ -6,7 +6,7 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: '*',
         allow: '/',
-        disallow: ['/studio/', '/api/'],
+        disallow: ['/api/'],
       },
     ],
     sitemap: 'https://dthree.co/sitemap.xml',

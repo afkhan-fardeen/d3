@@ -1,7 +1,6 @@
 'use client';
 
 import { useEffect, useRef, useState, useCallback } from 'react';
-import { useLocale } from 'next-intl';
 import { Link, usePathname } from '@/i18n/navigation';
 import { ThemeToggle } from './ThemeToggle';
 
@@ -24,7 +23,6 @@ const ChevronDownSVG = () => <svg width="13" height="13" viewBox="0 0 24 24" fil
 const ChevronRightSVG = () => <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>;
 const MenuSVG = () => <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>;
 const CloseSVG = () => <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>;
-const GlobeSVG = () => <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>;
 const ArrowSVG = () => <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>;
 
 /* ── DATA ── */
@@ -72,6 +70,7 @@ const INDUSTRIES = [
 
 const COMPANY = [
   { href: '/about', label: 'About D3', desc: 'Our story and mission', icon: <InfoSVG /> },
+  { href: '/projects', label: 'Projects', desc: 'Installations and deployments', icon: <MonitorSVG /> },
   { href: '/clients', label: 'Clients', desc: '500+ organisations', icon: <UsersSVG /> },
   { href: '/case-studies', label: 'Case Studies', desc: 'Real-world results', icon: <FileTextSVG /> },
   { href: '/partners', label: 'Partners', desc: 'Technology alliances', icon: <HandshakeSVG /> },
@@ -84,14 +83,12 @@ type MenuKey = 'solutions' | 'industries' | 'company' | null;
    NAVBAR
 ───────────────────────────────────────────── */
 export function Navbar() {
-  const locale = useLocale();
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeMenu, setActiveMenu] = useState<MenuKey>(null);
   const [mobileSection, setMobileSection] = useState<string | null>(null);
   const closeTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const otherLocale = locale === 'en' ? 'ar' : 'en';
 
   /* Scroll listener */
   useEffect(() => {
@@ -252,9 +249,6 @@ export function Navbar() {
         {/* Right actions */}
         <div className="d3-nav-actions">
           <ThemeToggle />
-          <Link href={pathname as Parameters<typeof Link>[0]['href']} locale={otherLocale} className="d3-lang-btn">
-            <GlobeSVG />{otherLocale.toUpperCase()}
-          </Link>
           <Link href="/contact" className="d3-cta-btn">Request Demo</Link>
           <button
             className="d3-hamburger"
@@ -366,15 +360,6 @@ export function Navbar() {
           <Link href="/contact" onClick={() => setMobileOpen(false)} className="d3-mob-cta">
             Request a Demo <ArrowSVG />
           </Link>
-          <Link
-            href={pathname as Parameters<typeof Link>[0]['href']}
-            locale={otherLocale}
-            onClick={() => setMobileOpen(false)}
-            className="d3-mob-lang"
-          >
-            <GlobeSVG />
-            {otherLocale === 'ar' ? 'العربية' : 'English'}
-          </Link>
         </div>
       </div>
 
@@ -382,7 +367,7 @@ export function Navbar() {
         /* ── NAV BASE ── */
         .d3-nav {
           position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
-          height: 72px;
+          height: 80px;
           display: flex; align-items: center; justify-content: space-between;
           padding: 0 clamp(16px, 4vw, 80px);
           background: color-mix(in srgb, var(--bg) 85%, transparent);
@@ -403,10 +388,10 @@ export function Navbar() {
           text-decoration: none; flex-shrink: 0;
         }
         .d3-logo-img {
-          height: 48px; width: auto; display: block;
+          height: 60px; width: auto; display: block;
           filter: none;
         }
-        .d3-logo-img--sm { height: 40px; }
+        .d3-logo-img--sm { height: 52px; }
         [data-theme="dark"] .d3-logo-img {
           filter: brightness(1.1) drop-shadow(0 0 1px rgba(255,255,255,0.05));
         }
@@ -476,14 +461,6 @@ export function Navbar() {
 
         /* ── RIGHT ACTIONS ── */
         .d3-nav-actions { display: flex; align-items: center; gap: 8px; flex-shrink: 0; }
-        .d3-lang-btn {
-          display: flex; align-items: center; gap: 5px;
-          font-size: 11px; font-weight: 700; letter-spacing: 0.04em;
-          color: var(--muted); text-decoration: none;
-          padding: 7px 13px; border: 1px solid var(--border); border-radius: 100px;
-          transition: color 0.2s, border-color 0.2s;
-        }
-        .d3-lang-btn:hover { color: var(--heading); border-color: var(--muted); }
         .d3-cta-btn {
           background: var(--cta); color: #fff;
           padding: 9px 20px; border-radius: 100px;
@@ -508,7 +485,6 @@ export function Navbar() {
         /* ── RESPONSIVE: HIDE DESKTOP, SHOW HAMBURGER ── */
         @media (max-width: 1024px) {
           .d3-nav-links { display: none !important; }
-          .d3-lang-btn { display: none !important; }
           .d3-cta-btn { display: none !important; }
           .d3-hamburger { display: flex !important; }
           .d3-logo-sub { display: none; }
@@ -524,12 +500,6 @@ export function Navbar() {
           overflow: hidden;
         }
         .d3-mobile-overlay--open {
-          transform: translateX(0);
-        }
-        [dir="rtl"] .d3-mobile-overlay {
-          transform: translateX(-100%);
-        }
-        [dir="rtl"] .d3-mobile-overlay--open {
           transform: translateX(0);
         }
 
@@ -561,12 +531,6 @@ export function Navbar() {
           font-size: 15px; font-weight: 700; text-decoration: none;
           letter-spacing: 0.02em;
           box-shadow: 0 4px 20px rgba(255,107,43,0.35);
-        }
-        .d3-mob-lang {
-          display: flex; align-items: center; justify-content: center; gap: 6px;
-          font-size: 13px; font-weight: 600; color: var(--muted);
-          text-decoration: none; padding: 10px;
-          border: 1px solid var(--border); border-radius: 100px;
         }
         .d3-mob-plain-link {
           display: flex; align-items: center;

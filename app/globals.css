@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&family=Cairo:wght@400;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800&display=swap');
 
 /* ── D3 LIGHT THEME ── */
 :root {
@@ -21,7 +21,6 @@
   --shadow-lg: 0 12px 48px rgba(0,33,71,0.1);
 
   --font: 'Montserrat', sans-serif;
-  --font-ar: 'Cairo', 'Montserrat', sans-serif;
   --r-sm: 8px;
   --r-md: 12px;
   --r-lg: 20px;
@@ -65,19 +64,6 @@ body {
   transition: background 0.3s, color 0.3s;
 }
 
-/* Arabic font override */
-[dir="rtl"] body,
-[dir="rtl"] h1,
-[dir="rtl"] h2,
-[dir="rtl"] h3,
-[dir="rtl"] h4,
-[dir="rtl"] p,
-[dir="rtl"] span,
-[dir="rtl"] a,
-[dir="rtl"] button {
-  font-family: var(--font-ar);
-}
-
 /* ── FOCUS ACCESSIBILITY ── */
 :focus-visible {
   outline: 2px solid var(--cta);
@@ -106,13 +92,6 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--heading);
   line-height: 1.1;
   letter-spacing: -0.5px;
-}
-
-[dir="rtl"] h1,
-[dir="rtl"] h2,
-[dir="rtl"] h3 {
-  font-family: var(--font-ar);
-  letter-spacing: 0;
 }
 
 /* ── LAYOUT UTILITIES ── */

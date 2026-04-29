@@ -2,13 +2,13 @@ import { MetadataRoute } from 'next';
 import { SOLUTIONS, INDUSTRIES, CASE_STUDIES, BLOG_POSTS } from '@/lib/data';
 
 const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://d3.com.bh';
-const LOCALES = ['en', 'ar'];
+const LOCALES = ['en'];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes: MetadataRoute.Sitemap = [];
 
   // Static pages
-  const staticPages = ['', '/about', '/partners', '/solutions', '/industries', '/case-studies', '/clients', '/contact', '/blog'];
+  const staticPages = ['', '/about', '/projects', '/partners', '/solutions', '/industries', '/case-studies', '/clients', '/contact', '/blog'];
   for (const locale of LOCALES) {
     for (const page of staticPages) {
       routes.push({

@@ -7,7 +7,7 @@ export function LocaleHtmlAttributes() {
   useEffect(() => {
     const html = document.documentElement;
     html.setAttribute('lang', locale);
-    html.setAttribute('dir', locale === 'ar' ? 'rtl' : 'ltr');
+    html.setAttribute('dir', 'ltr');
   }, [locale]);
   return null;
 }

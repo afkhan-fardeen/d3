@@ -85,7 +85,7 @@ export function Footer() {
           {/* Brand col */}
           <div className="footer-brand">
             <Link href="/" style={{ display: 'inline-flex', alignItems: 'center', textDecoration: 'none', marginBottom: 16 }}>
-              <img src="/d3logo.png" alt="D3 Digital Data Dimensions" style={{ height: 34, width: 'auto', filter: 'brightness(0) invert(1) opacity(0.9)' }} />
+              <img src="/d3logo.png" alt="D3 Digital Data Dimensions" style={{ height: 48, width: 'auto', filter: 'brightness(0) invert(1) opacity(0.9)' }} />
             </Link>
             <p style={{ fontSize: 13, color: 'rgba(255,255,255,0.38)', lineHeight: 1.8, maxWidth: 240, fontWeight: 300, marginBottom: 20 }}>
               {t('tagline')}

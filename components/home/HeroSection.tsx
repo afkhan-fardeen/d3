@@ -157,7 +157,7 @@ export function HeroSection() {
 
       <style>{`
         .hs-wrap {
-          min-height: calc(100svh - 72px);
+          min-height: calc(100svh - 80px);
           display: flex;
           align-items: center;
           justify-content: center;
