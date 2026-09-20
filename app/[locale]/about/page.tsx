@@ -2,13 +2,17 @@ import Image from 'next/image';
 import { RevealOnScroll } from '@/components/shared/RevealOnScroll';
 import { Link } from '@/i18n/navigation';
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 
-export async function generateMetadata(): Promise<Metadata> {
-  return {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  return pageMetadata({
+    locale,
+    path: '/about',
     title: 'About D3 | Digital Data Dimensions',
     description:
       'Learn about D3 (Digital Data Dimensions), Bahrain-based enterprise IT solutions provider serving the GCC since 2010.',
-  };
+  });
 }
 
 function CheckIcon() {

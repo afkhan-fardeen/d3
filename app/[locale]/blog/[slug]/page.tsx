@@ -1,22 +1,16 @@
 import { notFound } from 'next/navigation';
-import { BLOG_POSTS, SOLUTIONS } from '@/lib/data';
+import { BLOG_POSTS, SOLUTIONS, BLOG_RELATED_SOLUTIONS } from '@/lib/data';
 import { SectionEyebrow } from '@/components/shared/SectionEyebrow';
 import { ArrowIcon } from '@/components/shared/Button';
 import { CTASection } from '@/components/home/CTASection';
 import { Link } from '@/i18n/navigation';
+import { pageMetadata } from '@/lib/seo';
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
 
 export function generateStaticParams() {
   return BLOG_POSTS.map((p) => ({ slug: p.slug }));
 }
-
-const BLOG_RELATED_SOLUTIONS: Record<string, string[]> = {
-  'top-5-benefits-biometric-attendance': ['time-attendance-system', 'timetech-application'],
-  'queue-management-government-sector': ['queue-management-system'],
-  'rfid-asset-tracking-manufacturing': ['rfid-asset-tracking'],
-  'choosing-hr-software-bahrain': ['hr-payroll-software', 'timetech-application'],
-};
 
 const BLOG_FULL_CONTENT: Record<string, string[]> = {
   'top-5-benefits-biometric-attendance': [
@@ -50,17 +44,42 @@ const BLOG_FULL_CONTENT: Record<string, string[]> = {
     'Cloud vs On-Premise: Many government and enterprise clients in Bahrain require on-premise deployment for data sovereignty reasons. Ensure your chosen vendor supports this deployment model.',
     'D3\'s TimeTech HR module was built specifically for the GCC market, addressing all of these requirements from day one. It includes pre-built integrations with Bahraini government portals and supports Arabic-English bilingual operation throughout.',
   ],
+  'salary-slip-format-bahrain': [
+    'A compliant payslip in Bahrain needs to do two jobs at once: give the employee a clear breakdown of what they were paid, and give the employer a record that matches what was actually submitted through the Wage Protection System (WPS).',
+    'At minimum, a payslip should clearly show the pay period, basic salary, any allowances (housing, transport, and similar), overtime paid for the period, deductions (social insurance, advances, penalties where applicable) and the net amount transferred. Multi-currency employers should also show the currency the payment was made in.',
+    'WPS Alignment: Because WPS requires salary transfer files in a specific bank-readable format, the payslip and the WPS file should always be generated from the same source data. Manually re-typing figures between a spreadsheet and a WPS upload is one of the most common sources of payroll discrepancies we see in audits.',
+    'Multi-Company & Multi-Currency: Group companies operating more than one legal entity in Bahrain, or paying staff who work across GCC borders, need payroll software that keeps each entity\'s payslips and WPS submissions separate while still giving HR one consolidated view.',
+    'Record-Keeping: Employers should retain payslip records for as long as required under local labour regulations — automated HRMS storage removes the risk of a lost paper trail during a labour inspection.',
+    'D3\'s TimeTech HRMS generates payslips and the corresponding WPS salary file from a single payroll run, so the numbers an employee sees always match what was actually submitted to the bank.',
+  ],
+  'bahrain-labour-law-resignation-notice': [
+    'Notice periods in Bahrain generally depend on how the employment contract is structured — indefinite-term contracts and fixed-term contracts are typically treated differently, and the specific notice period is usually set out in the employment contract itself, within the bounds of what local labour law permits.',
+    'For indefinite contracts, a written notice period is standard practice, with the exact duration commonly tied to length of service. For fixed-term contracts, early termination by either party can carry different obligations than simply waiting out the contract term.',
+    'What HR Should Document: Whatever the applicable notice period, the resignation date, the last working day, and any agreed exceptions (such as a mutually agreed shorter notice period) should be captured in writing and stored against the employee\'s HR record — not just exchanged over email.',
+    'Final Settlement: Notice periods interact directly with final settlement calculations — unused leave, end-of-service benefits and any outstanding payroll adjustments are usually calculated as of the last working day, which makes accurate attendance records during the notice period important.',
+    'Because the specifics can change and depend on individual contract terms, HR teams should treat this as a starting framework and confirm current requirements with the Ministry of Labour or a qualified HR/legal advisor before finalising any resignation.',
+    'D3\'s TimeTech HRMS tracks notice periods, last working day and final settlement calculations against the same attendance and payroll data used throughout employment, so nothing has to be reconstructed manually at offboarding.',
+  ],
+  'overtime-calculation-bahrain': [
+    'Overtime for private-sector employees in Bahrain is generally paid at a premium over the employee\'s standard hourly rate, with different treatment typically applying to overtime worked on weekly rest days or public holidays versus overtime on an ordinary working day.',
+    'The starting point for any overtime calculation is an accurate ordinary hourly rate — usually derived from basic salary (and sometimes specific allowances) divided across standard contracted hours. Getting this base rate wrong is the single most common source of overtime disputes.',
+    'Manual Tracking Risk: When attendance is tracked on paper or spreadsheets, overtime hours are typically reconciled at month-end — by which point disputes over "how many hours did I actually work" are hard to resolve fairly for either side.',
+    'Automated Tracking: Biometric or mobile time attendance systems timestamp every clock-in and clock-out in real time, so overtime hours (and which category of overtime they fall into) are calculated the same way, every time, from the same source data used for regular payroll.',
+    'Because the applicable rates and rest-day rules can vary by contract type and sector, employers should confirm current requirements with the Ministry of Labour before finalising payroll policy — this article is a starting framework, not a substitute for that check.',
+    'D3\'s TimeTech time attendance system applies overtime rules automatically at the point of calculation, feeding straight into TimeTech HRMS payroll so there is no manual re-entry between attendance and pay.',
+  ],
 };
 
 export async function generateMetadata({ params }: Props) {
-  const { slug } = await params;
+  const { locale, slug } = await params;
   const post = BLOG_POSTS.find((p) => p.slug === slug);
-  if (!post) return { title: 'Post Not Found' };
-  return {
+  if (!post) return { title: { absolute: 'Post Not Found | D3 Blog' } };
+  return pageMetadata({
+    locale,
+    path: `/blog/${slug}`,
     title: `${post.title} | D3 Blog`,
     description: post.excerpt,
-    keywords: post.tags.join(', '),
-  };
+  });
 }
 
 export default async function BlogPostPage({ params }: Props) {

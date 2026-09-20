@@ -376,4 +376,39 @@ export const BLOG_POSTS = [
     tags: ['HRMS', 'Payroll', 'Bahrain', 'GCC'],
     publishedAt: '2026-04-01',
   },
+  // The three posts below preserve URL slugs that carried existing organic
+  // rankings on the previous dthree.co site — see go-live redirect plan.
+  {
+    slug: 'salary-slip-format-bahrain',
+    title: 'Salary Slip Format in Bahrain: What Every Payslip Must Include',
+    excerpt: 'What a compliant Bahrain payslip needs to show, how WPS salary files tie into it, and how TimeTech HRMS generates both automatically from the same payroll run.',
+    tags: ['Payroll', 'WPS', 'Bahrain'],
+    publishedAt: '2026-04-15',
+  },
+  {
+    slug: 'bahrain-labour-law-resignation-notice',
+    title: 'Bahrain Labour Law: Resignation and Notice Period Rules Explained',
+    excerpt: 'A practical overview of how notice periods generally work for indefinite and fixed-term contracts in Bahrain, and how HR teams track and document them correctly.',
+    tags: ['Labour Law', 'Bahrain', 'HR Compliance'],
+    publishedAt: '2026-04-22',
+  },
+  {
+    slug: 'overtime-calculation-bahrain',
+    title: 'How Overtime Is Calculated Under Bahrain Labour Law',
+    excerpt: 'How overtime pay is generally structured for private-sector employees in Bahrain, and how automated time attendance removes the manual calculation error risk.',
+    tags: ['Time Attendance', 'Overtime', 'Bahrain'],
+    publishedAt: '2026-04-29',
+  },
 ];
+
+/** Which solution pages each blog post links to — also used in reverse on
+ * solution pages to surface a "Related articles" block, so linking runs both ways. */
+export const BLOG_RELATED_SOLUTIONS: Record<string, string[]> = {
+  'top-5-benefits-biometric-attendance': ['time-attendance-system', 'timetech-application'],
+  'queue-management-government-sector': ['queue-management-system'],
+  'rfid-asset-tracking-manufacturing': ['rfid-asset-tracking'],
+  'choosing-hr-software-bahrain': ['hr-payroll-software', 'timetech-application'],
+  'salary-slip-format-bahrain': ['hr-payroll-software'],
+  'bahrain-labour-law-resignation-notice': ['hr-payroll-software', 'timetech-application'],
+  'overtime-calculation-bahrain': ['time-attendance-system', 'time-attendance-enterprise'],
+};

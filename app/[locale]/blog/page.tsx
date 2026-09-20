@@ -1,15 +1,20 @@
+import type { Metadata } from 'next';
 import { BLOG_POSTS } from '@/lib/data';
 import { RevealOnScroll } from '@/components/shared/RevealOnScroll';
 import { SectionEyebrow } from '@/components/shared/SectionEyebrow';
 import { ArrowIcon } from '@/components/shared/Button';
 import { CTASection } from '@/components/home/CTASection';
 import { Link } from '@/i18n/navigation';
+import { pageMetadata } from '@/lib/seo';
 
-export async function generateMetadata() {
-  return {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  return pageMetadata({
+    locale,
+    path: '/blog',
     title: 'Blog & Resources | D3',
     description: 'Industry insights, product updates and best practices for enterprise IT from the D3 team — Bahrain and the GCC.',
-  };
+  });
 }
 
 export default function BlogListPage() {

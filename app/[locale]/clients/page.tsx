@@ -1,12 +1,17 @@
 import { ClientsTabs } from '@/components/clients/ClientsTabs';
 import { SectionEyebrow } from '@/components/shared/SectionEyebrow';
 import { CTASection } from '@/components/home/CTASection';
+import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 
-export async function generateMetadata() {
-  return {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  return pageMetadata({
+    locale,
+    path: '/clients',
     title: 'Our Clients | D3',
     description: '500+ clients across the GCC trust D3, from government ministries and leading enterprises to retail chains, hospitals and industrial organisations.',
-  };
+  });
 }
 
 export default function ClientsPage() {

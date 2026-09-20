@@ -1,13 +1,19 @@
+import type { Metadata } from 'next';
 import { CASE_STUDIES } from '@/lib/data';
 import { RevealOnScroll } from '@/components/shared/RevealOnScroll';
 import { SectionEyebrow } from '@/components/shared/SectionEyebrow';
 import { CTASection } from '@/components/home/CTASection';
+import { pageMetadata } from '@/lib/seo';
+import { Link } from '@/i18n/navigation';
 
-export async function generateMetadata() {
-  return {
-    title: 'Client Projects | D3',
-    description: 'Real projects delivered by D3 for government ministries, enterprises and institutions across Bahrain and the GCC.',
-  };
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  return pageMetadata({
+    locale,
+    path: '/case-studies',
+    title: 'Client Case Studies & Outcomes | D3',
+    description: 'Completed client deployments and delivered outcomes — see how D3 solved real problems for government ministries, enterprises and institutions across Bahrain and the GCC.',
+  });
 }
 
 export default function CaseStudiesListPage() {
@@ -15,12 +21,12 @@ export default function CaseStudiesListPage() {
     <>
       <section className="page-hero" style={{ padding: '80px 0', background: 'var(--bg-surface)', borderBottom: '1px solid var(--border)' }}>
         <div style={{ maxWidth: 1440, margin: '0 auto', padding: '0 clamp(24px, 5vw, 80px)' }}>
-          <SectionEyebrow>What We&apos;ve Done</SectionEyebrow>
+          <SectionEyebrow>Completed Outcomes</SectionEyebrow>
           <h1 style={{ fontFamily: 'var(--font)', fontSize: 'clamp(32px, 4vw, 56px)', fontWeight: 300, letterSpacing: -1.5, lineHeight: 1.08, color: 'var(--heading)', marginBottom: 24, maxWidth: 700 }}>
-            Client Projects
+            Client Case Studies
           </h1>
           <p style={{ fontSize: 17, color: 'var(--body)', lineHeight: 1.75, fontWeight: 400, maxWidth: 600 }}>
-            A selection of real deployments delivered by D3 across government, education and the private sector in Bahrain and the GCC.
+            What D3 actually delivered for government, education and private-sector clients across Bahrain and the GCC — completed engagements, not a portfolio gallery. Looking for photos of live installations instead? See our <Link href="/projects" style={{ color: 'var(--heading)' }}>Projects</Link> page.
           </p>
         </div>
       </section>

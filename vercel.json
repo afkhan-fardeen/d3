@@ -4,6 +4,13 @@
   "outputDirectory": ".next",
   "installCommand": "npm install",
   "devCommand": "npm run dev",
+  "redirects": [
+    {
+      "source": "/blog/salary-slip-format-bahrain",
+      "destination": "/en/blog/salary-slip-format-bahrain",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",

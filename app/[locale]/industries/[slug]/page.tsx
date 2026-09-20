@@ -5,6 +5,7 @@ import { SectionEyebrow } from '@/components/shared/SectionEyebrow';
 import { Button, ArrowIcon } from '@/components/shared/Button';
 import { CTASection } from '@/components/home/CTASection';
 import { Link } from '@/i18n/navigation';
+import { pageMetadata } from '@/lib/seo';
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
 
@@ -19,21 +20,28 @@ const INDUSTRY_SOLUTIONS: Record<string, string[]> = {
   logistics: ['rfid-asset-tracking', 'time-attendance-system', 'access-control-system', 'erp-retail-management'],
 };
 
+/**
+ * Only "government" has real matching entries in CASE_STUDIES today — healthcare,
+ * retail and logistics have no verified client case study in lib/data.ts, so they're
+ * intentionally left without one rather than pointing at fabricated slugs.
+ */
 const INDUSTRY_CASE_STUDIES: Record<string, string[]> = {
-  government: ['ministry-of-interior-attendance', 'bahrain-airport-cctv'],
-  healthcare: ['gulf-air-queue-management'],
-  retail: ['jawad-business-erp'],
-  logistics: ['alba-rfid-assets'],
+  government: ['survey-land-registration-bureau', 'labour-market-regulatory-authority'],
+  healthcare: [],
+  retail: [],
+  logistics: [],
 };
 
 export async function generateMetadata({ params }: Props) {
-  const { slug } = await params;
+  const { locale, slug } = await params;
   const ind = INDUSTRIES.find((i) => i.slug === slug);
-  if (!ind) return { title: 'Industry Not Found' };
-  return {
+  if (!ind) return { title: { absolute: 'Industry Not Found | D3' } };
+  return pageMetadata({
+    locale,
+    path: `/industries/${slug}`,
     title: `${ind.title} IT Solutions Bahrain | D3`,
     description: `D3 provides enterprise IT solutions for the ${ind.title} sector — ${ind.desc}`,
-  };
+  });
 }
 
 export default async function IndustryPage({ params }: Props) {

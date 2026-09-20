@@ -22,7 +22,7 @@ export const viewport: Viewport = {
   viewportFit: 'cover',
 };
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://d3.com.bh';
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://dthree.co';
 
 export const metadata: Metadata = {
   metadataBase: new URL(BASE_URL),

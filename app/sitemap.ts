@@ -1,14 +1,16 @@
 import { MetadataRoute } from 'next';
 import { SOLUTIONS, INDUSTRIES, CASE_STUDIES, BLOG_POSTS } from '@/lib/data';
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://d3.com.bh';
-const LOCALES = ['en'];
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://dthree.co';
+const LOCALES = ['en', 'ar'];
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes: MetadataRoute.Sitemap = [];
 
-  // Static pages
-  const staticPages = ['', '/about', '/projects', '/partners', '/solutions', '/industries', '/case-studies', '/clients', '/contact', '/blog'];
+  // Static pages — must match real routes under app/[locale]/. There is no
+  // /solutions or /industries index page (only /solutions/[slug] and
+  // /industries/[slug]), so those are intentionally excluded here.
+  const staticPages = ['', '/about', '/projects', '/partners', '/case-studies', '/clients', '/contact', '/blog', '/news', '/careers', '/privacy-policy', '/sitemap'];
   for (const locale of LOCALES) {
     for (const page of staticPages) {
       routes.push({

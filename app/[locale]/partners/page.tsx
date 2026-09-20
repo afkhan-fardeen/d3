@@ -2,12 +2,16 @@ import Image from 'next/image';
 import { RevealOnScroll } from '@/components/shared/RevealOnScroll';
 import { CTASection } from '@/components/home/CTASection';
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 
-export async function generateMetadata(): Promise<Metadata> {
-  return {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  return pageMetadata({
+    locale,
+    path: '/partners',
     title: 'Technology Partners | D3',
     description: "D3's technology partners — strategic alliances with leading global IT companies.",
-  };
+  });
 }
 
 const PARTNERS: { name: string; logoSrc: string; logoWidth?: number; logoHeight?: number }[] = [

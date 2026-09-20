@@ -1,12 +1,16 @@
 import { SectionEyebrow } from '@/components/shared/SectionEyebrow';
 import { Link } from '@/i18n/navigation';
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 
-export async function generateMetadata(): Promise<Metadata> {
-  return {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  return pageMetadata({
+    locale,
+    path: '/sitemap',
     title: 'Sitemap | D3 Digital Data Dimensions',
     description: 'Complete sitemap for D3 — Digital Data Dimensions website.',
-  };
+  });
 }
 
 const SITEMAP = [
@@ -23,7 +27,7 @@ const SITEMAP = [
     links: [
       { label: 'Time Attendance — Enterprise', href: '/solutions/time-attendance-enterprise' },
       { label: 'Time Attendance — Standard', href: '/solutions/time-attendance-system' },
-      { label: 'Time Attendance — Enterprise', href: '/solutions/time-attendance-enterprise' },
+      { label: 'TimeTech Application', href: '/solutions/timetech-application' },
       { label: 'HRMS', href: '/solutions/hr-payroll-software' },
       { label: 'Visitor Management System', href: '/solutions/visitor-management' },
       { label: 'Queue Management System', href: '/solutions/queue-management-system' },

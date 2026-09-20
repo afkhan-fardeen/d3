@@ -8,12 +8,13 @@ import { Footer } from '@/components/layout/Footer';
 import { FloatingActions } from '@/components/layout/FloatingActions';
 import { PageTransition } from '@/components/layout/PageTransition';
 import { GTMScript } from '@/components/layout/GTMScript';
+import { GAScript } from '@/components/layout/GAScript';
 import { LocaleHtmlAttributes } from '@/components/layout/LocaleHtmlAttributes';
 import type { Metadata } from 'next';
 
 type Locale = 'en' | 'ar';
 
-const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://d3.com.bh';
+const BASE_URL = process.env.NEXT_PUBLIC_BASE_URL || 'https://dthree.co';
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));
@@ -82,6 +83,7 @@ export default async function LocaleLayout({
   return (
     <NextIntlClientProvider messages={messages}>
       <LocaleHtmlAttributes />
+      <GAScript />
       <GTMScript gtmId={gtmId} />
       <ThemeProvider>
         <div suppressHydrationWarning>

@@ -2,13 +2,18 @@ import type { Metadata } from 'next';
 import { RevealOnScroll } from '@/components/shared/RevealOnScroll';
 import { CTASection } from '@/components/home/CTASection';
 import { ProjectsGallery } from '@/components/projects/ProjectsGallery';
+import { pageMetadata } from '@/lib/seo';
+import { Link } from '@/i18n/navigation';
 
-export async function generateMetadata(): Promise<Metadata> {
-  return {
-    title: 'Projects | D3 Digital Data Dimensions',
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  return pageMetadata({
+    locale,
+    path: '/projects',
+    title: 'Project Installations Gallery | D3 Digital Data Dimensions',
     description:
-      'View D3 project installations across Bahrain and the GCC — queue management systems, time attendance deployments, digital signage, and enterprise IT solutions.',
-  };
+      'Photos of live D3 installations across Bahrain and the GCC — queue management kiosks, time attendance devices, digital signage and enterprise IT hardware in the field.',
+  });
 }
 
 export default function ProjectsPage() {
@@ -40,7 +45,7 @@ export default function ProjectsPage() {
                 Projects
               </h1>
               <p style={{ fontSize: 17, color: 'var(--body)', lineHeight: 1.75, fontWeight: 400, maxWidth: 680 }}>
-                A portfolio of D3 installations across Bahrain and the GCC — including queue management, time attendance, and enterprise IT deployments.
+                A photo gallery of D3 installations in the field across Bahrain and the GCC — queue management, time attendance, and enterprise IT deployments. Looking for the client outcomes behind these installations? See our <Link href="/case-studies" style={{ color: 'var(--heading)' }}>Case Studies</Link>.
               </p>
             </div>
           </RevealOnScroll>

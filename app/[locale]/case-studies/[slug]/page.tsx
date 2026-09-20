@@ -4,6 +4,7 @@ import { SectionEyebrow } from '@/components/shared/SectionEyebrow';
 import { Button, ArrowIcon } from '@/components/shared/Button';
 import { CTASection } from '@/components/home/CTASection';
 import { Link } from '@/i18n/navigation';
+import { pageMetadata } from '@/lib/seo';
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
 
@@ -12,13 +13,15 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props) {
-  const { slug } = await params;
+  const { locale, slug } = await params;
   const cs = CASE_STUDIES.find((c) => c.slug === slug);
-  if (!cs) return { title: 'Project Not Found' };
-  return {
-    title: `${cs.clientName} | D3 Client Projects`,
+  if (!cs) return { title: { absolute: 'Case Study Not Found | D3' } };
+  return pageMetadata({
+    locale,
+    path: `/case-studies/${slug}`,
+    title: `${cs.clientName} | D3 Client Case Studies`,
     description: `D3 delivered: ${cs.solution.slice(0, 120)}`,
-  };
+  });
 }
 
 export default async function CaseStudyPage({ params }: Props) {

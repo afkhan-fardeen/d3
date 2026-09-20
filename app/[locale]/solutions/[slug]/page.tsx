@@ -8,13 +8,14 @@ import {
   Zap, Eye, LayoutGrid, ShoppingCart, TrendingUp,
   CheckCircle2, Headphones, Database, Radio, Link2,
 } from 'lucide-react';
-import { SOLUTIONS, CASE_STUDIES, INDUSTRIES } from '@/lib/data';
+import { SOLUTIONS, INDUSTRIES, BLOG_POSTS, BLOG_RELATED_SOLUTIONS } from '@/lib/data';
 import { SOLUTION_VISUAL_IMAGES } from '@/lib/solution-card-images';
 import { RevealOnScroll } from '@/components/shared/RevealOnScroll';
 import { SectionEyebrow } from '@/components/shared/SectionEyebrow';
 import { Button, ArrowIcon } from '@/components/shared/Button';
 import { CTASection } from '@/components/home/CTASection';
 import { Link } from '@/i18n/navigation';
+import { pageMetadata } from '@/lib/seo';
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
 
@@ -100,11 +101,13 @@ function chipColor(text: string) {
 
 const SOLUTION_DETAILS: Record<string, {
   seoKeyword: string;
+  /** The actual head-term this page targets — drives <title>, <h1> and meta description. */
+  primaryKeyword: string;
+  metaDescription: string;
   tagline: string;
   features: { title: string; desc: string }[];
   highlights: string[];
   industries: string[];
-  caseStudySlug?: string;
   heroImage?: { src: string; alt: string };
   brochurePath?: string;
   youtubeUrl?: string;
@@ -112,6 +115,8 @@ const SOLUTION_DETAILS: Record<string, {
 }> = {
   'consultancy': {
     seoKeyword: 'IT consultancy Bahrain GCC outsourced engineers ICT planning',
+    primaryKeyword: 'IT Consultancy Bahrain',
+    metaDescription: 'IT consultancy in Bahrain — outsourced system administrators, network engineers, DBAs and software engineers for GCC enterprises, plus ICT strategic planning from D3.',
     tagline: 'D3 has highly experienced business and information systems consultants who work with your business strategies and plan your ICT systems to maximise return on investment.',
     highlights: ['System Administrators', 'Network Engineers (CISCO)', 'Database Administrators', 'Software Engineers', 'Hardware Technicians', 'Help Desk Support'],
     features: [
@@ -125,7 +130,6 @@ const SOLUTION_DETAILS: Record<string, {
       { title: 'System Analysis', desc: 'System Analysts to evaluate, document and improve your enterprise business processes and systems.' },
     ],
     industries: ['government', 'healthcare', 'retail', 'logistics'],
-    caseStudySlug: 'ministry-of-interior-attendance',
     additionalSections: [
       {
         title: 'Outsourced IT Roles Available',
@@ -144,6 +148,8 @@ const SOLUTION_DETAILS: Record<string, {
   },
   'visitor-management': {
     seoKeyword: 'visitor management system Bahrain GCC reception kiosk access card',
+    primaryKeyword: 'Visitor Management System',
+    metaDescription: 'Visitor management system for Bahrain & GCC offices — reception kiosk, pre-registration, access card issuance and full audit trail from TimeTech by D3.',
     tagline: 'TimeTech professional and advanced online visitor management system: reception kiosk, pre-registration, access cards and full audit trail.',
     highlights: ['Visitor Pre-Registration', 'Access Card Issuance', 'Door Assignment', 'Audit Reports', 'Automatic Access Removal', 'Appointment Tracking'],
     features: [
@@ -159,6 +165,8 @@ const SOLUTION_DETAILS: Record<string, {
   },
   'time-attendance-enterprise': {
     seoKeyword: 'time attendance enterprise Bahrain GCC multi-site biometric mobile app',
+    primaryKeyword: 'Enterprise Time Attendance System',
+    metaDescription: 'Enterprise time attendance system for multi-site, multi-company GCC organisations — geo-fenced mobile app, project manhour tracking and full self-service portal.',
     tagline: 'No.1 TimeTech — recognised and appreciated by GCC Labour. Save time on one click and boost company productivity with enterprise attendance and HRMS for unlimited locations.',
     highlights: ['Multi-Site & Multi-Company', 'Auto Shift Picking', 'ProjectWise Manhours', 'Employee Self-Service', 'Geo-Fenced Mobile App', 'LMRA Reports'],
     features: [
@@ -235,6 +243,8 @@ const SOLUTION_DETAILS: Record<string, {
   },
   'hr-payroll-software': {
     seoKeyword: 'HR software Bahrain WPS payroll HRMS GCC GOSI',
+    primaryKeyword: 'HRMS Software',
+    metaDescription: 'HRMS software for Bahrain and the GCC — multi-company, multi-currency payroll with GOSI and WPS compliance, bilingual self-service, built by TimeTech.',
     tagline: 'TimeTech professional HRMS and Payroll for the Gulf Region. Multi-company, multi-currency, bi-lingual, flexible and cost effective.',
     highlights: ['WPS-ready Payroll', 'GOSI Integration', 'Multi-Company', 'Employee Self-Service', 'Document Control', 'Mobile App'],
     features: [
@@ -327,6 +337,8 @@ const SOLUTION_DETAILS: Record<string, {
   },
   'timetech-application': {
     seoKeyword: 'TimeTech time attendance HRMS Bahrain GCC',
+    primaryKeyword: 'TimeTech Application',
+    metaDescription: 'TimeTech Application — the complete cloud workforce platform combining attendance, HRMS, visitor management and mobile self-service for GCC enterprises.',
     tagline: 'TimeTech: a complete cloud workforce platform with attendance, HRMS, visitor management and mobile self-service, purpose-built for GCC enterprises.',
     highlights: ['LMRA & WPS Compliant', 'Multi-company & multi-site', 'iOS & Android mobile app', 'Arabic & English interface', 'Auto shift picking', 'Geo-fenced mobile attendance'],
     features: [
@@ -343,6 +355,8 @@ const SOLUTION_DETAILS: Record<string, {
   },
   'time-attendance-system': {
     seoKeyword: 'time attendance system Bahrain GCC biometric',
+    primaryKeyword: 'Time Attendance System',
+    metaDescription: 'Time attendance system for Bahrain & GCC businesses — biometric fingerprint and face recognition, auto-shift picking and LMRA-compliant payroll export.',
     tagline: 'TimeTech cloud-based biometric attendance across unlimited locations, with real-time dashboards, auto-shift picking, overtime management and LMRA-compliant payroll export.',
     highlights: ['Fingerprint & face recognition', 'LMRA compliant reports', 'Real-time dashboard', 'Auto shift picking', 'Email alerts for absences', 'Overtime approval workflow'],
     features: [
@@ -360,6 +374,8 @@ const SOLUTION_DETAILS: Record<string, {
   },
   'queue-management-system': {
     seoKeyword: 'queue management system Bahrain GCC kiosk wired wireless',
+    primaryKeyword: 'Queue Management System',
+    metaDescription: 'Queue management system for ministries, hospitals and enterprises in Bahrain & the GCC — wired and wireless kiosks, audio announcements and live analytics.',
     tagline: 'TimeTech wired and wireless kiosk-based queuing for ministries, hospitals and enterprises, with audio announcements, live analytics and supervisor reporting.',
     highlights: ['15" all-in-one KIOSK', 'Wired or wireless', 'Audio announcements', 'Multi-lingual support', 'Real-time analytics', 'Supervisor reporting'],
     features: [
@@ -377,6 +393,8 @@ const SOLUTION_DETAILS: Record<string, {
   },
   'rfid-asset-tracking': {
     seoKeyword: 'RFID asset tracking Bahrain warehouse management document tracking',
+    primaryKeyword: 'RFID Asset Tracking System',
+    metaDescription: 'RFID asset tracking system for GCC warehouses and industrial sites — active and passive RFID tags, handheld scanners and real-time inventory visibility.',
     tagline: 'TimeTech asset, document and warehouse tracking across multiple buildings, departments and warehouses, using RFID tags, handheld scanners and barcode technology.',
     highlights: ['Active & passive RFID', 'Handheld mobile scanners', 'Multi-building & multi-site', 'Document Tracking', 'Warehouse WMS', 'Gold & Valuables Tracking'],
     features: [
@@ -418,6 +436,8 @@ const SOLUTION_DETAILS: Record<string, {
   },
   'access-control-system': {
     seoKeyword: 'access control system IP CCTV Bahrain biometric cameras surveillance',
+    primaryKeyword: 'Access Control System',
+    metaDescription: 'Access control system with IP CCTV and biometric door access for Bahrain & GCC enterprises — face recognition, proximity cards and centralised management.',
     tagline: 'TimeTech enterprise-grade IP surveillance and biometric access control. D3 delivers complete security solutions for indoor, outdoor, business and home environments.',
     highlights: ['IP CCTV (Indoor & Outdoor)', 'Fingerprint & Face Recognition', 'Proximity Card / NFC', 'Centralised Management', 'No Lost Keys or Passwords', 'Scalable to Enterprise'],
     features: [
@@ -461,6 +481,8 @@ const SOLUTION_DETAILS: Record<string, {
   },
   'digital-signage': {
     seoKeyword: 'digital signage LED displays Bahrain GCC vertical signage eBook CMS',
+    primaryKeyword: 'Digital Signage',
+    metaDescription: 'Digital signage for Bahrain & GCC — 4K LED and LCD displays with centralised CMS, 24/7 operation and remote content scheduling from D3.',
     tagline: 'TimeTech indoor and outdoor LED displays, vertical portrait screens, e-book readers and IP power controllers, all managed from a central CMS with scheduling and real-time content updates.',
     highlights: ['LED from 4mm to 20mm pitch', 'Vertical Displays from 42"', 'Virtual Interactive eBook', 'IP Power Controller', 'Web-based CMS', '24/7 Operation'],
     features: [
@@ -530,6 +552,9 @@ const SOLUTION_DETAILS: Record<string, {
   },
   'erp-retail-management': {
     seoKeyword: 'ERP software Bahrain retail management inventory electronic shelf labels',
+    // Not yet volume-researched — flagged in the SEO audit as a follow-up keyword pass.
+    primaryKeyword: 'ERP Software',
+    metaDescription: 'ERP software for GCC retail and enterprise — inventory, procurement, finance, payroll and electronic shelf labels in one multi-company, multi-currency system.',
     tagline: 'TimeTech ERP with inventory, purchasing, sales, finance and HR integrated into one unified system, with electronic shelf labels and restaurant management. Multi-company, multi-currency, multi-branch.',
     highlights: ['Multi-Company & Multi-Branch', 'Real-time Inventory', 'Electronic Shelf Labels', 'Financial Accounting', 'Restaurant Management', 'Van Sales & RFID'],
     features: [
@@ -601,14 +626,18 @@ const SOLUTION_DETAILS: Record<string, {
 };
 
 export async function generateMetadata({ params }: Props) {
-  const { slug } = await params;
+  const { locale, slug } = await params;
   const sol = SOLUTIONS.find((s) => s.slug === slug);
   const detail = SOLUTION_DETAILS[slug];
-  if (!sol && !detail) return { title: 'Solution Not Found' };
-  const title = sol?.title ?? detail?.tagline?.slice(0, 60) ?? 'Solution';
+  if (!sol && !detail) return { title: { absolute: 'Solution Not Found | D3' } };
+  const primaryKeyword = detail?.primaryKeyword ?? sol?.title ?? 'Solution';
   return {
-    title: `${title} | D3: Digital Data Dimensions`,
-    description: sol?.desc ?? detail?.tagline,
+    ...pageMetadata({
+      locale,
+      path: `/solutions/${slug}`,
+      title: `${primaryKeyword} | D3 — Digital Data Dimensions`,
+      description: detail?.metaDescription ?? sol?.desc ?? detail?.tagline ?? '',
+    }),
     keywords: detail?.seoKeyword,
   };
 }
@@ -632,9 +661,12 @@ export default async function SolutionPage({ params }: Props) {
   };
 
   const heroImg = HERO_IMAGES[slug];
-  const relatedCaseStudy = CASE_STUDIES.find((cs) => cs.slug === detail.caseStudySlug);
   const relatedIndustries = INDUSTRIES.filter((ind) => detail.industries.includes(ind.slug));
   const relatedSolutions = SOLUTIONS.filter((s) => s.slug !== slug).slice(0, 3);
+  const relatedArticleSlugs = Object.entries(BLOG_RELATED_SOLUTIONS)
+    .filter(([, sols]) => sols.includes(slug))
+    .map(([postSlug]) => postSlug);
+  const relatedArticles = BLOG_POSTS.filter((p) => relatedArticleSlugs.includes(p.slug));
 
   return (
     <>
@@ -644,9 +676,9 @@ export default async function SolutionPage({ params }: Props) {
           <div className="sol-hero-grid">
             {/* Left */}
             <div>
-              <SectionEyebrow>Solution</SectionEyebrow>
+              <SectionEyebrow>{sol.title}</SectionEyebrow>
               <h1 style={{ fontFamily: 'var(--font)', fontSize: 'clamp(32px, 4vw, 56px)', fontWeight: 400, letterSpacing: -1.5, lineHeight: 1.08, color: 'var(--heading)', marginBottom: 20 }}>
-                {sol.title}
+                {detail.primaryKeyword}
               </h1>
               <p style={{ fontSize: 17, color: 'var(--body)', lineHeight: 1.8, fontWeight: 400, marginBottom: 36 }}>
                 {detail.tagline}
@@ -921,6 +953,37 @@ export default async function SolutionPage({ params }: Props) {
           @media (max-width: 560px) { .related-grid { grid-template-columns: 1fr !important; } }
         `}</style>
       </section>
+
+      {/* ── RELATED ARTICLES ── */}
+      {relatedArticles.length > 0 && (
+        <section style={{ padding: '72px 0', background: 'var(--bg-surface)', borderTop: '1px solid var(--border)' }}>
+          <div style={{ maxWidth: 1440, margin: '0 auto', padding: '0 clamp(20px, 5vw, 80px)' }}>
+            <SectionEyebrow>Guides</SectionEyebrow>
+            <h2 style={{ fontFamily: 'var(--font)', fontSize: 'clamp(22px, 2.8vw, 36px)', fontWeight: 400, letterSpacing: -0.8, color: 'var(--heading)', marginBottom: 32 }}>
+              Related articles
+            </h2>
+            <div className="related-articles-grid">
+              {relatedArticles.map((post) => (
+                <Link key={post.slug} href={`/blog/${post.slug}` as Parameters<typeof Link>[0]['href']} style={{
+                  display: 'block', background: 'var(--card)', border: '1px solid var(--border)', borderRadius: 16, padding: '24px',
+                  textDecoration: 'none', transition: 'border-color 0.2s',
+                }}>
+                  <div style={{ fontSize: 15, fontWeight: 400, color: 'var(--heading)', marginBottom: 8, lineHeight: 1.4 }}>{post.title}</div>
+                  <div style={{ fontSize: 13, color: 'var(--body)', lineHeight: 1.6, marginBottom: 16 }}>{post.excerpt.slice(0, 100)}…</div>
+                  <span style={{ display: 'inline-flex', alignItems: 'center', gap: 4, fontSize: 13, fontWeight: 400, color: 'var(--muted)' }}>
+                    Read article <ArrowIcon size={12} />
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+          <style>{`
+            .related-articles-grid { display: grid; grid-template-columns: repeat(${Math.min(relatedArticles.length, 3)}, 1fr); gap: 16px; }
+            @media (max-width: 900px) { .related-articles-grid { grid-template-columns: 1fr 1fr !important; } }
+            @media (max-width: 560px) { .related-articles-grid { grid-template-columns: 1fr !important; } }
+          `}</style>
+        </section>
+      )}
 
       <CTASection />
     </>

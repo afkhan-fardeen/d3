@@ -1,3 +1,4 @@
+import type { Metadata } from 'next';
 import { HeroSection } from '@/components/home/HeroSection';
 import { MarqueeSection } from '@/components/home/MarqueeSection';
 import { TrustLogosSection } from '@/components/home/TrustLogosSection';
@@ -5,23 +6,16 @@ import { SolutionsSection } from '@/components/home/SolutionsSection';
 import { WhySection } from '@/components/home/WhySection';
 import { ProcessSection } from '@/components/home/ProcessSection';
 import { CTASection } from '@/components/home/CTASection';
+import { pageMetadata } from '@/lib/seo';
 
-export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }) {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
   const { locale } = await params;
-  return {
+  return pageMetadata({
+    locale,
+    path: '',
     title: 'D3: Digital Data Dimensions | Enterprise IT Solutions Bahrain',
     description: 'D3 delivers enterprise time attendance, HRMS, queue management and digital signage solutions for the GCC. 500+ clients. Built in Bahrain since 2010.',
-    alternates: {
-      canonical: `/${locale}`,
-      languages: { en: '/en' },
-    },
-    openGraph: {
-      title: 'D3: Digital Data Dimensions',
-      description: 'Enterprise IT solutions for the GCC: time attendance, HR, queue management, digital signage, RFID and more.',
-      locale,
-      type: 'website',
-    },
-  };
+  });
 }
 
 export default function HomePage() {

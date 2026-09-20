@@ -1,11 +1,15 @@
 import { SectionEyebrow } from '@/components/shared/SectionEyebrow';
 import type { Metadata } from 'next';
+import { pageMetadata } from '@/lib/seo';
 
-export async function generateMetadata(): Promise<Metadata> {
-  return {
+export async function generateMetadata({ params }: { params: Promise<{ locale: string }> }): Promise<Metadata> {
+  const { locale } = await params;
+  return pageMetadata({
+    locale,
+    path: '/privacy-policy',
     title: 'Privacy Policy | D3 Digital Data Dimensions',
     description: 'D3 Privacy Policy — how we collect, use and protect your personal information.',
-  };
+  });
 }
 
 export default function PrivacyPolicyPage() {
