@@ -380,9 +380,9 @@ export const BLOG_POSTS = [
   // rankings on the previous dthree.co site — see go-live redirect plan.
   {
     slug: 'salary-slip-format-bahrain',
-    title: 'Salary Slip Format in Bahrain: What Every Payslip Must Include',
-    excerpt: 'What a compliant Bahrain payslip needs to show, how WPS salary files tie into it, and how TimeTech HRMS generates both automatically from the same payroll run.',
-    tags: ['Payroll', 'WPS', 'Bahrain'],
+    title: 'Salary Slip Format in Bahrain: Free Template and What to Include',
+    excerpt: 'A salary slip (payslip) format for Bahrain employers with the fields to include, a sample calculation in BHD and a free copy-and-paste template.',
+    tags: ['Payroll', 'Salary Slip', 'Bahrain'],
     publishedAt: '2026-04-15',
   },
   {
@@ -399,6 +399,41 @@ export const BLOG_POSTS = [
     tags: ['Time Attendance', 'Overtime', 'Bahrain'],
     publishedAt: '2026-04-29',
   },
+  {
+    slug: 'visitor-management-system-gcc',
+    title: 'Visitor Management System: A Buyer\'s Guide for GCC Businesses',
+    excerpt: 'What a visitor management system does, which features matter in the GCC, and a checklist for choosing one. Written for Bahrain and Gulf businesses.',
+    tags: ['Visitor Management', 'Buyer\'s Guide', 'GCC'],
+    publishedAt: '2026-10-03',
+  },
+  {
+    slug: 'queue-management-system-gcc',
+    title: 'Queue Management System: How to Choose One in the GCC',
+    excerpt: 'What a queue management system is, the types available, key features and how to choose one for banks, clinics, government offices and retail in the GCC.',
+    tags: ['Queue Management', 'Buyer\'s Guide', 'GCC'],
+    publishedAt: '2026-10-09',
+  },
+  {
+    slug: 'hr-software-gcc-buyers-guide',
+    title: 'HR Software for GCC Companies: What to Look For in 2026',
+    excerpt: 'A buyer\'s guide to HR software for Bahrain and GCC companies: payroll, WPS, attendance, Arabic support and how to compare vendors.',
+    tags: ['HRMS', 'Payroll', 'GCC'],
+    publishedAt: '2026-10-14',
+  },
+  {
+    slug: 'biometric-attendance-system-guide',
+    title: 'Biometric Attendance System: How It Works and How to Choose One',
+    excerpt: 'How a biometric attendance system works, fingerprint vs face recognition, what to compare and how to connect it to payroll. A guide for GCC employers.',
+    tags: ['Time Attendance', 'Biometric', 'GCC'],
+    publishedAt: '2026-10-19',
+  },
+  {
+    slug: 'fingerprint-attendance-system',
+    title: 'Fingerprint Attendance System: Strengths, Limits and Setup',
+    excerpt: 'How fingerprint attendance systems work, where they fail, how to set one up and when to choose face recognition instead. A practical guide for GCC employers.',
+    tags: ['Time Attendance', 'Fingerprint', 'GCC'],
+    publishedAt: '2026-10-23',
+  },
 ];
 
 /** Which solution pages each blog post links to — also used in reverse on
@@ -411,4 +446,9 @@ export const BLOG_RELATED_SOLUTIONS: Record<string, string[]> = {
   'salary-slip-format-bahrain': ['hr-payroll-software'],
   'bahrain-labour-law-resignation-notice': ['hr-payroll-software', 'timetech-application'],
   'overtime-calculation-bahrain': ['time-attendance-system', 'time-attendance-enterprise'],
+  'visitor-management-system-gcc': ['visitor-management', 'access-control-system'],
+  'queue-management-system-gcc': ['queue-management-system', 'digital-signage'],
+  'hr-software-gcc-buyers-guide': ['hr-payroll-software', 'timetech-application'],
+  'biometric-attendance-system-guide': ['time-attendance-system', 'time-attendance-enterprise'],
+  'fingerprint-attendance-system': ['time-attendance-system', 'time-attendance-enterprise'],
 };

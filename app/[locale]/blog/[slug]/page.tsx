@@ -5,6 +5,8 @@ import { ArrowIcon } from '@/components/shared/Button';
 import { CTASection } from '@/components/home/CTASection';
 import { Link } from '@/i18n/navigation';
 import { pageMetadata } from '@/lib/seo';
+import { getBlogArticle } from '@/lib/blog-content';
+import { Markdown } from '@/components/blog/Markdown';
 
 type Props = { params: Promise<{ locale: string; slug: string }> };
 
@@ -78,7 +80,7 @@ export async function generateMetadata({ params }: Props) {
     locale,
     path: `/blog/${slug}`,
     title: `${post.title} | D3 Blog`,
-    description: post.excerpt,
+    description: getBlogArticle(slug)?.meta.meta_description || post.excerpt,
   });
 }
 
@@ -89,6 +91,7 @@ export default async function BlogPostPage({ params }: Props) {
 
   const relatedSolSlugs = BLOG_RELATED_SOLUTIONS[slug] || [];
   const relatedSolutions = relatedSolSlugs.map((s) => SOLUTIONS.find((sol) => sol.slug === s)).filter(Boolean) as typeof SOLUTIONS;
+  const article = getBlogArticle(slug);
   const content = BLOG_FULL_CONTENT[slug] || [post.excerpt];
   const otherPosts = BLOG_POSTS.filter((p) => p.slug !== slug);
 
@@ -117,10 +120,16 @@ export default async function BlogPostPage({ params }: Props) {
         <div style={{ maxWidth: 1440, margin: '0 auto', padding: '0 clamp(24px, 5vw, 80px)' }} className="section-container">
           <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr', gap: 80, alignItems: 'start' }} className="blog-detail-grid">
             <article>
-              <p style={{ fontSize: 18, color: 'var(--body)', lineHeight: 1.8, fontWeight: 400, marginBottom: 32, fontStyle: 'italic' }}>{post.excerpt}</p>
-              {content.map((para, i) => (
-                <p key={i} style={{ fontSize: 15, color: 'var(--body)', lineHeight: 1.85, marginBottom: 24, fontWeight: 400 }}>{para}</p>
-              ))}
+              {article ? (
+                <Markdown source={article.body} />
+              ) : (
+                <>
+                  <p style={{ fontSize: 18, color: 'var(--body)', lineHeight: 1.8, fontWeight: 400, marginBottom: 32, fontStyle: 'italic' }}>{post.excerpt}</p>
+                  {content.map((para, i) => (
+                    <p key={i} style={{ fontSize: 15, color: 'var(--body)', lineHeight: 1.85, marginBottom: 24, fontWeight: 400 }}>{para}</p>
+                  ))}
+                </>
+              )}
 
               {relatedSolutions.length > 0 && (
                 <div style={{ marginTop: 48, padding: '28px', background: 'var(--bg-surface)', border: '1px solid var(--border)', borderRadius: 16 }}>
